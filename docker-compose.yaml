@@ -1,0 +1,14 @@
+version: '3'
+services:
+  reverse_proxy: 
+    build: .
+    container_name: reverse_proxy
+    ports:
+      - 8080:8080
+    environment:
+      - PROXY_CONFIG=config.ini
+  origin:
+    image: mendhak/http-https-echo
+    container_name: origin_server
+    expose:
+      - "80"
